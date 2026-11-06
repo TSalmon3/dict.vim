@@ -1,0 +1,24 @@
+[package-data]
+command=scripts/package-data.sh 2025-02-04
+cwd=$(VIM_ROOT)
+output=terminal
+
+[gh-auth]
+command=gh auth status
+cwd=$(VIM_ROOT)
+output=terminal
+
+[gh-push]
+command=gh release create data-2025-02-04 dist/dict-data-2025-02-04.tar.gz dist/dict-data-2025-02-04.tar.gz.sha256 --title "Dictionary data 2025-02-04" --notes "Dictionary data 2025-02-04" --draft
+cwd=$(VIM_ROOT)
+output=terminal
+
+[gh-publish]
+command=gh release edit data-2025-02-04 --draft=false
+cwd=$(VIM_ROOT)
+output=terminal
+
+[gh-upload]
+command=gh release upload data-2025-02-04 dist/dict-data-2025-02-04.tar.gz dist/dict-data-2025-02-04.tar.gz.sha256 --clobber
+cwd=$(VIM_ROOT)
+output=terminal
